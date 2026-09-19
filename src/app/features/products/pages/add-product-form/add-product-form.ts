@@ -32,7 +32,7 @@ export class AddProductForm {
     offer: false,
     discount: ['', PRODUCT_FORM_SCHEMA.discount.validators],
     stock: ['', PRODUCT_FORM_SCHEMA.stock.validators],
-    imageUrl: 'no-image.png',
+    imageUrl: '',
     features: ['', PRODUCT_FORM_SCHEMA.features.validators],
     deleted: false,
     createdAt: new Date(),
