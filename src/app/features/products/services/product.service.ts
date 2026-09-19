@@ -8,6 +8,10 @@ export class Products {
 
   private http = inject(HttpClient);
 
+  private persist(): void {
+    localStorage.setItem('products', JSON.stringify(this.products()));
+  }
+
   products = signal<IProduct[]>([]);
 
   loadProducts(): void {
@@ -36,8 +40,5 @@ export class Products {
     this.persist();
   }
 
-  private persist(): void {
-    localStorage.setItem('products', JSON.stringify(this.products()));
-  }
 
 }
