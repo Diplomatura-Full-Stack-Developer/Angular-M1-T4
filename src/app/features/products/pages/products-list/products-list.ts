@@ -1,11 +1,9 @@
 import { Component, inject } from '@angular/core';
 import { ProductCard } from '../ui/product-card/product-card';
-import { computed } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Products } from '../../services/product.service';
-import { IProduct } from '../../interfaces/product.interface';
-
+import { computed } from '@angular/core';
 
 @Component({
   selector: 'app-products-list',
@@ -16,12 +14,13 @@ export class ProductsList implements OnInit {
 
   private productService = inject(Products);
 
+  products = computed(() =>
+    this.productService.products()?.filter((p) => !p.deleted),
+  );
+
   ngOnInit(): void {
     this.productService.loadProducts();
   }
 
-  products = computed(() =>
-    this.productService.products()?.filter((product: IProduct) => !product.deleted),
-  );
 }
 

@@ -11,24 +11,33 @@ export class Products {
   products = signal<IProduct[]>([]);
 
   loadProducts(): void {
-
-    if (this.products().length > 0) {
+    const stored = localStorage.getItem('products');
+    if (stored !== null) {
+      this.products.set(JSON.parse(stored) as IProduct[]);
       return;
     }
-    this.http.get<IProduct[]>(this.apiUrl).subscribe((prod) => {
-      this.products.set(prod.map((product) => ({ ...product, id: crypto.randomUUID() })));
+
+    this.http.get<IProduct[]>(this.apiUrl).subscribe((data) => {
+      const withIds = data.map((p) => ({ ...p, id: crypto.randomUUID() }));
+      this.products.set(withIds);
+      this.persist();
     });
+  }
+
+  addProduct(product: IProduct): void {
+    this.products.update((list) => [...list, product]);
+    this.persist();
   }
 
   deleteProduct(id: string): void {
     this.products.update((list) =>
-      list.map((product) =>
-        product.id === id ? { ...product, deleted: true } : product,
-      ),
+      list.map((p) => (p.id === id ? { ...p, deleted: true } : p)),
     );
+    this.persist();
   }
 
-  addProduct(product: IProduct): void {
-    this.products.set([...this.products()!, product]);
+  private persist(): void {
+    localStorage.setItem('products', JSON.stringify(this.products()));
   }
+
 }
