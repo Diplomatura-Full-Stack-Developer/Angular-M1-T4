@@ -1,7 +1,5 @@
 import { Routes } from '@angular/router';
 import { MainLayout } from './shell/main-layout/main-layout';
-import { ProductsList } from '../app/features/products/pages/products-list/products-list';
-import { AddProductForm } from '../app/features/products/pages/add-product-form/add-product-form';
 
 
 export const routes: Routes = [
@@ -11,11 +9,15 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        component: ProductsList,
+        loadComponent: () => import('./features/products/pages/products-list/products-list')
       },
       {
         path: 'add-product',
-        component: AddProductForm,
+        loadComponent: () => import('./features/products/pages/add-product-form/add-product-form')
+      },
+      {
+        path: 'register',
+        loadComponent: () => import('./features/users/pages/register/register')
       },
     ],
   },

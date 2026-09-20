@@ -3,6 +3,9 @@
   appearance="outlined"
 >
   <mat-card-header class="text-center my-2">
+    @if (error(); as errorMessage) {
+      <div class="text-accent-600 text-center text-2xl font-bold">{{ errorMessage }}</div>
+    }
     <mat-card-title class="text-lg font-bold text-shadow-sm text-primary-600">{{
       product.category
     }}</mat-card-title>

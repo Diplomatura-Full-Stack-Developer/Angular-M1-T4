@@ -23,6 +23,7 @@ export class AddProductForm {
   private productsService = inject(Products);
   private router = inject(Router);
 
+  error = this.productsService.error;
 
   productForm = this.formBuilder.group({
     category: ['', PRODUCT_FORM_SCHEMA.category.validators],
@@ -78,3 +79,5 @@ export class AddProductForm {
     this.router.navigate(['/']);
   }
 }
+
+export default AddProductForm;

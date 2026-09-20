@@ -16,6 +16,7 @@ export class ProductCard {
 
   @Input() product: IProduct = {} as IProduct;
 
+  error = this.productService.error;
 
   deleteProductById(id: string): void {
     this.productService.deleteProduct(id)
