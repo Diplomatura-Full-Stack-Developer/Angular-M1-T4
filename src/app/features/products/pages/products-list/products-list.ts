@@ -24,3 +24,5 @@ export class ProductsList implements OnInit {
     this.productService.loadProducts();
   }
 }
+
+export default ProductsList;
