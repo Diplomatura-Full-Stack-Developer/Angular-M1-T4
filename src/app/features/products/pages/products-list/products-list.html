@@ -8,11 +8,15 @@
 </div>
 
 <div class="grid grid-cols-[repeat(auto-fit,minmax(20rem,1fr))] gap-4 p-4">
-  @if (products()?.length > 0) {
-    @for (product of products(); track product.id) {
-      <app-product-card [product]="product"></app-product-card>
-    }
+  @if (error(); as errorMessage) {
+    <div class="text-accent-600 text-center text-2xl font-bold">{{ errorMessage }}</div>
   } @else {
-    <div class="text-accent-600 text-center text-2xl font-bold">No hay productos disponibles</div>
+    @if (products().length > 0) {
+      @for (product of products(); track product.id) {
+        <app-product-card [product]="product"></app-product-card>
+      }
+    } @else {
+      <div class="text-accent-600 text-center text-2xl font-bold">No hay productos disponibles</div>
+    }
   }
 </div>

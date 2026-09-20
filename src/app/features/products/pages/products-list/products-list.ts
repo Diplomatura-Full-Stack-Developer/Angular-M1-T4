@@ -7,20 +7,20 @@ import { computed } from '@angular/core';
 
 @Component({
   selector: 'app-products-list',
-  imports: [ProductCard, RouterLink],
+  imports: [RouterLink, ProductCard],
   templateUrl: './products-list.html',
 })
 export class ProductsList implements OnInit {
 
   private productService = inject(Products);
 
+  error = this.productService.error;
+
   products = computed(() =>
-    this.productService.products()?.filter((p) => !p.deleted),
+    this.productService.products().filter((p) => !p.deleted),
   );
 
   ngOnInit(): void {
     this.productService.loadProducts();
   }
-
 }
-

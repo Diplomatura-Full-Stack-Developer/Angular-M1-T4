@@ -7,5 +7,5 @@ import { Component } from '@angular/core';
 })
 export class Header {
   title: string = 'Angular';
-  subtitle: string = 'Modulo 1 - Tarea 3';
+  subtitle: string = 'Modulo 1 - Tarea 4';
 }
