@@ -7,7 +7,6 @@
       <li class="hover:text-primary-500 transition-colors duration-300">
         <a class="cursor-pointer" (click)="logout()">Cerrar sesión</a>
       </li>
-      <span class="text-accent-600 text-sm font-bold">Hola, {{ session()?.name }}</span>
     } @else {
       <li class="hover:text-primary-500 transition-colors duration-300">
         <a [routerLink]="['/login']">Iniciar sesión</a>
