@@ -4,7 +4,7 @@ import { IUser } from '../interfaces/user.interface';
 import { catchError, of } from 'rxjs';
 
 @Service()
-export class Users {
+export class UserService {
 
   private apiUrl = 'data/users.json';
 

@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { ProductCard } from '../ui/product-card/product-card';
 import { OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Products } from '../../services/product.service';
+import { ProductService } from '../../services/product.service';
 import { computed } from '@angular/core';
 
 @Component({
@@ -12,7 +12,7 @@ import { computed } from '@angular/core';
 })
 export class ProductsList implements OnInit {
 
-  private productService = inject(Products);
+  private productService = inject(ProductService);
 
   error = this.productService.error;
 

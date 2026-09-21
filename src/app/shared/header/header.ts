@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { Navbar } from '../ui/navbar/navbar';
-import { Users } from '../../features/users/services/users.service';
+import { UserService } from '../../features/users/services/user.service';
 import { computed } from '@angular/core';
 @Component({
   selector: 'app-header',
@@ -9,9 +9,9 @@ import { computed } from '@angular/core';
 })
 export class Header {
 
-  private usersService = inject(Users);
+  private userService = inject(UserService);
 
-  session = computed(() => this.usersService.session());
+  session = computed(() => this.userService.session());
 
   setTitle = computed(() => this.session()?.name ? `Hola, ${this.session()?.name}` : 'Angular');
 

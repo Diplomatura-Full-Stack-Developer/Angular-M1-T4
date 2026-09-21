@@ -3,7 +3,7 @@ import { IProduct } from '../interfaces/product.interface';
 import { HttpClient } from '@angular/common/http';
 import { catchError, of } from 'rxjs';
 @Service()
-export class Products {
+export class ProductService {
 
   private apiUrl = 'data/products.json';
 

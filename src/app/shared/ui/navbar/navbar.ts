@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Users } from '../../../features/users/services/users.service';
+import { UserService } from '../../../features/users/services/user.service';
 import { inject } from '@angular/core';
 
 import { computed } from '@angular/core';
@@ -12,12 +12,12 @@ import { computed } from '@angular/core';
 })
 export class Navbar {
 
-  private usersService = inject(Users);
+  private userService = inject(UserService);
 
-  session = computed(() => this.usersService.session());
+  session = computed(() => this.userService.session());
 
   logout = () => {
-    this.usersService.logoutUser();
+    this.userService.logoutUser();
   };
 
 }

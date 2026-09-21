@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { NgClass } from '@angular/common';
-import { Users } from '../../services/users.service';
+import { UserService } from '../../services/user.service';
 import { Router } from '@angular/router';
 import {
   USER_FORM_SCHEMA, LoginField, fieldErrorMessage
@@ -22,10 +22,10 @@ export class Login {
 
   private formBuilder = inject(FormBuilder);
   private dialog = inject(MatDialog); // TODO: Implementar el dialog de confirmación
-  private usersService = inject(Users);
+  private userService = inject(UserService);
   private router = inject(Router);
 
-  error = this.usersService.error;
+  error = this.userService.error;
 
   userForm = this.formBuilder.group({
     email: ['', USER_FORM_SCHEMA.email.validators],
@@ -42,7 +42,7 @@ export class Login {
   }
 
   ngOnInit() {
-    this.usersService.seedUsers()
+    this.userService.seedUsers()
   }
 
 
@@ -53,7 +53,7 @@ export class Login {
       return;
     }
 
-    this.usersService.loginUser(this.userForm.value.email as string, this.userForm.value.password as string);
+    this.userService.loginUser(this.userForm.value.email as string, this.userForm.value.password as string);
     this.userForm.reset();
     this.router.navigate(['']);
   }

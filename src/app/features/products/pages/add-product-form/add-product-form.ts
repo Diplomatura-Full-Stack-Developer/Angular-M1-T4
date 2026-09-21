@@ -7,7 +7,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { NgClass } from '@angular/common';
 import { ConfirmDialog } from '../../../../shared/ui/confirm-dialog/confirm-dialog';
-import { Products } from '../../services/product.service';
+import { ProductService } from '../../services/product.service';
 import { IProduct } from '../../interfaces/product.interface';
 import { Router } from '@angular/router';
 @Component({
@@ -20,10 +20,10 @@ export class AddProductForm {
 
   private formBuilder = inject(FormBuilder);
   private dialog = inject(MatDialog);
-  private productsService = inject(Products);
+  private productService = inject(ProductService);
   private router = inject(Router);
 
-  error = this.productsService.error;
+  error = this.productService.error;
 
   productForm = this.formBuilder.group({
     category: ['', PRODUCT_FORM_SCHEMA.category.validators],
@@ -67,7 +67,7 @@ export class AddProductForm {
       this.productForm.reset();
     });
 
-    this.productsService.addProduct({
+    this.productService.addProduct({
       ...this.productForm.value,
       id: crypto.randomUUID(),
       deleted: false,

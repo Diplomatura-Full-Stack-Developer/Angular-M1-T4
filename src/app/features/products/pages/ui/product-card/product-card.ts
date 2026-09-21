@@ -4,7 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { IProduct } from '../../../interfaces/product.interface';
 import { CurrencyPipe } from '@angular/common';
-import { Products } from '../../../services/product.service';
+import { ProductService } from '../../../services/product.service';
 import { DiscountPipe } from '../../../../../shared/pipes/discount.pipe';
 @Component({
   selector: 'app-product-card',
@@ -12,7 +12,7 @@ import { DiscountPipe } from '../../../../../shared/pipes/discount.pipe';
   templateUrl: './product-card.html',
 })
 export class ProductCard {
-  private productService = inject(Products);
+  private productService = inject(ProductService);
 
   @Input() product: IProduct = {} as IProduct;
 
