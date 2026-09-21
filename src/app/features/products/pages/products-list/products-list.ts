@@ -21,7 +21,7 @@ export class ProductsList implements OnInit {
   );
 
   ngOnInit(): void {
-    this.productService.loadProducts();
+    this.productService.seedProducts();
   }
 }
 

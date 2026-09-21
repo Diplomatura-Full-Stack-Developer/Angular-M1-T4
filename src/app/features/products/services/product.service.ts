@@ -18,7 +18,7 @@ export class Products {
   private readonly _error = signal<string | null>(null);
   readonly error = this._error.asReadonly();
 
-  loadProducts(): void {
+  seedProducts(): void {
     const stored = localStorage.getItem('products');
     if (stored !== null) {
       this.products.set(JSON.parse(stored) as IProduct[]);

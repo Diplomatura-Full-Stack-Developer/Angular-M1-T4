@@ -19,7 +19,7 @@ export class Users {
   private readonly _error = signal<string | null>(null);
   readonly error = this._error.asReadonly();
 
-  loadUsers(): void {
+  seedUsers(): void {
     const stored = localStorage.getItem('users');
     if (stored !== null) {
       this.users.set(JSON.parse(stored) as IUser[]);
@@ -44,6 +44,13 @@ export class Users {
   registerUser(user: IUser): void {
     this.users.update((users) => [...users, user]);
     this.persist();
+  }
+
+  loginUser(email: string, password: string): void {
+    const user = this.users().find((user) => user.email === email && user.password === password);
+    if (user) {
+      localStorage.setItem('user', JSON.stringify(user));
+    }
   }
 
   deleteUser(id: string): void {
