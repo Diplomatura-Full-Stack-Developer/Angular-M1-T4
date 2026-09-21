@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Navbar } from '../ui/navbar/navbar';
 @Component({
   selector: 'app-header',
-  imports: [RouterLink],
+  imports: [Navbar],
   templateUrl: './header.html',
 })
 export class Header {

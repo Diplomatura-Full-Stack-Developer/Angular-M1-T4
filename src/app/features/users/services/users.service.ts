@@ -16,6 +16,8 @@ export class Users {
 
   users = signal<IUser[]>([]);
 
+  session = signal<IUser | undefined>(undefined);
+
   private readonly _error = signal<string | null>(null);
   readonly error = this._error.asReadonly();
 
@@ -47,10 +49,15 @@ export class Users {
   }
 
   loginUser(email: string, password: string): void {
-    const user = this.users().find((user) => user.email === email && user.password === password);
-    if (user) {
-      localStorage.setItem('user', JSON.stringify(user));
+    this.session.set(this.users().find((user) => user.email === email && user.password === password));
+    if (this.session()) {
+      localStorage.setItem('session', JSON.stringify(this.session()));
     }
+  }
+
+  logoutUser(): void {
+    this.session.set(undefined);
+    localStorage.removeItem('session');
   }
 
   deleteUser(id: string): void {

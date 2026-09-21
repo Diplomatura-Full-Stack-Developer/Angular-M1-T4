@@ -1,0 +1,17 @@
+<nav class="flex justify-end items-center gap-2 hidden md:block">
+  <ul class="flex flex-row gap-4 text-sm font-bold">
+    <li class="hover:text-primary-500 transition-colors duration-300">
+      <a [routerLink]="['']">Inicio</a>
+    </li>
+    @if (session()) {
+      <li class="hover:text-primary-500 transition-colors duration-300">
+        <a class="cursor-pointer" (click)="logout()">Cerrar sesión</a>
+      </li>
+      <span class="text-accent-600 text-sm font-bold">Hola, {{ session()?.name }}</span>
+    } @else {
+      <li class="hover:text-primary-500 transition-colors duration-300">
+        <a [routerLink]="['/login']">Iniciar sesión</a>
+      </li>
+    }
+  </ul>
+</nav>

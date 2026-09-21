@@ -26,9 +26,10 @@ export const USER_FORM_SCHEMA = {
 } as const;
 
 export type UserField = keyof typeof USER_FORM_SCHEMA;
+export type LoginField = 'email' | 'password';
 
 export function fieldErrorMessage(
-  field: UserField,
+  field: UserField | LoginField,
   control: AbstractControl | null,
 ): string | null {
   if (!control?.touched || !control.errors) {
