@@ -23,9 +23,16 @@
       <mat-icon>home</mat-icon>
       <span>Inicio</span>
     </button>
-    <button mat-menu-item [routerLink]="['/login']">
-      <mat-icon>login</mat-icon>
-      <span>Iniciar sesión</span>
-    </button>
+    @if (session()) {
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        <span>Cerrar sesión</span>
+      </button>
+    } @else {
+      <button mat-menu-item [routerLink]="['/login']">
+        <mat-icon>login</mat-icon>
+        <span>Iniciar sesión</span>
+      </button>
+    }
   </mat-menu>
 </nav>
