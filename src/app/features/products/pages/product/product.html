@@ -1,0 +1,46 @@
+@if (product(); as product) {
+  <mat-card
+    class="example-card justify-between items-center bg-primary-100/80! shadow-lg! border-none! m-4"
+    appearance="outlined"
+  >
+    <mat-card-header class="text-center my-2">
+      @if (error(); as errorMessage) {
+        <div class="text-accent-600 text-center text-2xl font-bold">{{ errorMessage }}</div>
+      }
+      <mat-card-title class="text-lg font-bold text-shadow-sm text-primary-600">{{
+        product.category
+      }}</mat-card-title>
+      <mat-card-subtitle class="text-sm text-secondary-500! font-bold text-shadow-sm">{{
+        product.brand
+      }}</mat-card-subtitle>
+    </mat-card-header>
+    <img
+      mat-card-xl-image
+      [src]="product.imageUrl"
+      alt="Photo of a Shiba Inu"
+      class="w-full h-full object-contain"
+    />
+    <mat-card-content class="text-sm text-gray-700 text-shadow-sm my-2">
+      <p><span class="font-bold">Precio: </span> {{ product.price | currency: '$ ' }}</p>
+
+      @if (product.discount > 0) {
+        <p class="text-accent-600 font-bold">
+          <span class="font-bold">Precio con descuento: </span>
+          {{ product.price | discount: product.discount! | currency: '$ ' }}
+        </p>
+      }
+      <p>
+        <span class="font-bold">Stock: </span>
+        {{ product.stock && product.stock > 0 ? 'Disponible' : 'Agotado' }}
+      </p>
+      <p>
+        <span class="font-bold">Oferta: </span>
+        {{ product.offer ? '12 Cuotas sin interes' : 'Este producto no tiene oferta' }}
+      </p>
+      <p><span class="font-bold">Características: </span> {{ product.features?.join(', ') }}</p>
+    </mat-card-content>
+    <mat-card-actions> </mat-card-actions>
+  </mat-card>
+} @else {
+  <div class="text-accent-600 text-center text-2xl font-bold">Producto no encontrado</div>
+}

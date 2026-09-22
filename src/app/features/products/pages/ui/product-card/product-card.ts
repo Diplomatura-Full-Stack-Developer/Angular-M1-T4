@@ -6,9 +6,10 @@ import { IProduct } from '../../../interfaces/product.interface';
 import { CurrencyPipe } from '@angular/common';
 import { ProductService } from '../../../services/product.service';
 import { DiscountPipe } from '../../../../../shared/pipes/discount.pipe';
+import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-product-card',
-  imports: [MatCardModule, MatButtonModule, MatIconModule, CurrencyPipe, DiscountPipe],
+  imports: [MatCardModule, MatButtonModule, MatIconModule, CurrencyPipe, DiscountPipe, RouterLink],
   templateUrl: './product-card.html',
 })
 export class ProductCard {
@@ -19,7 +20,7 @@ export class ProductCard {
   error = this.productService.error;
 
   deleteProductById(id: string): void {
-    this.productService.deleteProduct(id)
+    this.productService.deleteProduct(id);
   }
 
 }

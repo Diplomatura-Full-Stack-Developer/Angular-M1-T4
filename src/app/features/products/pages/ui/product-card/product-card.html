@@ -14,7 +14,7 @@
     }}</mat-card-subtitle>
   </mat-card-header>
   <img
-    mat-card-lg-image
+    mat-card-md-image
     [src]="product.imageUrl"
     alt="Photo of a Shiba Inu"
     class="w-full h-full object-contain"
@@ -27,11 +27,9 @@
         Precio con descuento: {{ product.price | discount: product.discount | currency: '$ ' }}
       </p>
     }
-    <p>{{ product.stock && product.stock > 0 ? 'Stock Disponible' : 'Stock Agotado' }}</p>
-    <p>{{ product.offer ? '12 Cuotas sin interes' : '' }}</p>
-    <p>{{ product.features.join(', ') }}</p>
   </mat-card-content>
   <mat-card-actions>
+    <button matButton [routerLink]="['/product', product.id]">Ver producto</button>
     <button matButton class="bg-accent-600 text-white" (click)="deleteProductById(product.id)">
       Eliminar
     </button>

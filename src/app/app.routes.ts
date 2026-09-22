@@ -23,6 +23,10 @@ export const routes: Routes = [
         path: 'login',
         loadComponent: () => import('./features/users/pages/login/login')
       },
+      {
+        path: 'product/:id',
+        loadComponent: () => import('./features/products/pages/product/product')
+      },
     ],
   },
 ];

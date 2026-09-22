@@ -41,6 +41,10 @@ export class ProductService {
     });
   }
 
+  getProductById(id: string): IProduct | undefined {
+    return this.products().find((p) => p.id === id);
+  }
+
   addProduct(product: IProduct): void {
     try {
       this.products.update((list) => [...list, product]);
