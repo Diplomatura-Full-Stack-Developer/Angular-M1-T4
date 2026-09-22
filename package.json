@@ -1,5 +1,5 @@
 {
-  "name": "angular-m1-t1",
+  "name": "angular-m1-t4",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -15,6 +15,7 @@
     "@angular/common": "^22.1.0",
     "@angular/compiler": "^22.1.0",
     "@angular/core": "^22.1.0",
+    "@angular/fire": "^20.1.0",
     "@angular/forms": "^22.1.0",
     "@angular/material": "^22.1.5",
     "@angular/platform-browser": "^22.1.0",
