@@ -38,6 +38,10 @@
         {{ product.offer ? '12 Cuotas sin interes' : 'Este producto no tiene oferta' }}
       </p>
       <p><span class="font-bold">Características: </span> {{ product.features?.join(', ') }}</p>
+      <p>
+        <span class="font-bold">Fecha de alta: </span>
+        {{ product.createdAt | date: 'dd/MM/yyyy' }}
+      </p>
     </mat-card-content>
     <mat-card-actions> </mat-card-actions>
   </mat-card>

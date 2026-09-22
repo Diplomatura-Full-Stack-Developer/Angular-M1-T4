@@ -7,12 +7,12 @@ import { computed } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs/operators';
-import { CurrencyPipe } from '@angular/common';
+import { CurrencyPipe, DatePipe } from '@angular/common';
 import { DiscountPipe } from '../../../../shared/pipes/discount.pipe';
 
 @Component({
   selector: 'app-product',
-  imports: [MatButtonModule, MatCardModule, CurrencyPipe, DiscountPipe],
+  imports: [MatButtonModule, MatCardModule, CurrencyPipe, DiscountPipe, DatePipe],
   templateUrl: './product.html',
 })
 export class Product {

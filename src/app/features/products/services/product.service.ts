@@ -34,7 +34,7 @@ export class ProductService {
       if (data.length === 0 && this._error()) {
         return;
       }
-      const withIds = data.map((p) => ({ ...p, id: crypto.randomUUID() }));
+      const withIds = data.map((p) => ({ ...p, id: crypto.randomUUID(), createdAt: new Date(), deleted: false }));
       this.products.set(withIds);
       this._error.set(null);
       this.persist();
