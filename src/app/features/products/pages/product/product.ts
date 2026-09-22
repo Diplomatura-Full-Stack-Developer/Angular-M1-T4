@@ -37,8 +37,5 @@ export class Product {
   }
 
   error = this.productService.error;
-
-
-
 }
 export default Product;

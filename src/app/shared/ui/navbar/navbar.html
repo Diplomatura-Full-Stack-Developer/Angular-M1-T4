@@ -14,3 +14,18 @@
     }
   </ul>
 </nav>
+<nav class="flex justify-end items-center gap-2 block md:hidden">
+  <button matIconButton [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+    <mat-icon>dehaze</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item [routerLink]="['']">
+      <mat-icon>home</mat-icon>
+      <span>Inicio</span>
+    </button>
+    <button mat-menu-item [routerLink]="['/login']">
+      <mat-icon>login</mat-icon>
+      <span>Iniciar sesión</span>
+    </button>
+  </mat-menu>
+</nav>
