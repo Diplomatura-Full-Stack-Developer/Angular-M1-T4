@@ -132,13 +132,30 @@ firebase deploy
 git clone https://github.com/Diplomatura-Full-Stack-Developer/Angular-M1-T4
 ```
 
-1. Instalar las dependencias:
+2. Instalar las dependencias:
 
 ```bash
 npm install
 ```
 
-1. Ejecutar la aplicación:
+3. Configurar variables de entorno:
+
+```typescript
+export const environment = {
+  production: false,
+  firebaseConfig: {
+    apiKey: '',
+    authDomain: '',
+    projectId: '',
+    storageBucket: '',
+    messagingSenderId: '',
+    appId: '',
+    measurementId: '',
+  },
+};
+```
+
+4. Ejecutar la aplicación:
 
 ```bash
 ng serve
